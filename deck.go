@@ -3,14 +3,15 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
 type deck []string
 
 func (d deck) print() {
-	for i, card := range d {
-		fmt.Println(i, card)
+	for _, card := range d {
+		fmt.Println(card)
 	}
 }
 
@@ -40,4 +41,15 @@ func newDeck() deck {
 	}
 
 	return cards
+}
+
+func deckFromFile(filename string) deck {
+	bytes, err := ioutil.ReadFile(filename)
+
+	if err != nil {
+		fmt.Println("ERROR: ", err)
+		os.Exit(1)
+	}
+
+	return deck(strings.Split(string(bytes), ","))
 }
