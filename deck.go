@@ -19,7 +19,7 @@ func (d deck) toString() string {
 }
 
 func (d deck) saveToFile(filename string) error {
-	return ioutil.WriteFile(filename+".deck", []byte(d.toString()), 0666)
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
 func deal(d deck, size int) (deck, deck) {

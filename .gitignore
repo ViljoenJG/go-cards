@@ -14,4 +14,3 @@
 # IDE directories
 .vscode/
 .idea/
-*.deck
